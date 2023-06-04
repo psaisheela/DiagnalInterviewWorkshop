@@ -2,12 +2,18 @@
 Codebase for diagnal workshop containing one home screen which fetches movie data from JSON files with search feature.
 
 To Run : Once react native setup is complete: Follow the steps: 
+
 Setup
+
 Clone the repository and install the dependencies
-npm install
+
+ npm install
+ 
 Start the frontend application locally
-for android : npx react-native run-android 
-for iOS: npx react-native run-ios
+
+ for android : npx react-native run-android 
+ 
+ for iOS: npx react-native run-ios
 
 Features: 
 1. Fetches the data from JSON files in a lazy fashion. Pagination enabled. 
