@@ -3,7 +3,8 @@ import {
   SafeAreaView,
   BackHandler,
   FlatList,
-  StyleSheet
+  StyleSheet,
+  RefreshControl
 } from 'react-native';
 import images from './assets/images';
 import data from './API';
@@ -20,7 +21,7 @@ function Home({ route }) {
   const [searchText, setSearchText] = useState(''); // Store the search text the user types in search box.
   const [showSearch, setShowSearch] = useState(false); // Controls the visibility of the search textbox.
   const [title, setTitle] = useState(null); // Store the title of the page fetched from the API.
-
+  const [refreshing, setRefreshing] = useState(false);// controls the refresh
 
   // function to handle backpress. If search is underway, it will close the search, else will exit the app.
   const handleBackPress = () => {
@@ -110,6 +111,18 @@ function Home({ route }) {
           />
         }
         stickyHeaderIndices={[0]}
+
+        refreshControl={
+          // pull to refresh
+          <RefreshControl refreshing = {refreshing} onRefresh={()=>{
+            setRefreshing(true); 
+            setMovieData(original); 
+            setSearchText('');
+            setShowSearch(false);
+            setRefreshing(false);
+          }}/>
+        }
+        
       />
     </SafeAreaView>
   );
